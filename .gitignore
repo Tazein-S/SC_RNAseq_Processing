@@ -1,0 +1,10 @@
+results/
+data/
+samples/
+.nextflow*
+.nextflow/
+work/
+*.fa
+*.gz
+*.gtf
+*.gmt
