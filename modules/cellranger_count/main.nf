@@ -1,7 +1,4 @@
-#!/usr/bin/env nextflow
-
 process COUNT {
-    label 'process_high' //can be even higher!
     container 'ghcr.io/bf528/cellranger:latest'
     publishDir params.outdir, mode: 'copy'
 
@@ -14,11 +11,11 @@ process COUNT {
 
     script:
     """
-    cellranger count --id=${sample} \
-        --transcriptome=${index} \
-        --fastqs=${fastqs} \
+    cellranger count --id=$sample \
+        --transcriptome=$index \
+        --fastqs=$fastqs \
         --create-bam=true \
-        --localcores = 8
+        --localcores=8 \
         --localmem=64
     """
 

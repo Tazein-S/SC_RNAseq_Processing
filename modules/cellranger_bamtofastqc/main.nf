@@ -9,20 +9,18 @@ process BAMTOFASTQ {
     tuple val(sample), path(bam)
 
     output:
-    tuple val(sample), path("${sample}_fastqs"), emit: fastqs
+    tuple val(sample), path("${sample}/")
 
     script:
     """
-    cellranger bamtofastq \\
-        --nthreads=${task.cpus} \\
-        ${bam} \\
-        ${sample}_fastqs
+    cellranger bamtofastq \
+        --nthreads=${task.cpus} \
+        $bam \
+        ${sample}/
     """
 
     stub:
     """
-    mkdir -p ${sample}_fastqs
-    touch ${sample}_fastqs/${sample}_R1.fastq.gz
-    touch ${sample}_fastqs/${sample}_R2.fastq.gz
+    mkdir -p ${sample}
     """
 }
