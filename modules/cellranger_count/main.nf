@@ -1,4 +1,5 @@
 process COUNT {
+    label 'process_veryhigh'
     container 'ghcr.io/bf528/cellranger:latest'
     publishDir params.outdir, mode: 'copy'
 
@@ -15,13 +16,12 @@ process COUNT {
         --transcriptome=$index \
         --fastqs=$fastqs \
         --create-bam=true \
-        --localcores=8 \
-        --localmem=64
+        --localcores=16 \
+        --localmem=256
     """
 
     stub:
     """
-    mkdir -p ${sample}/outs
-    touch ${sample}/outs/web_summary.html
+    touch stub.fastq
     """
 }
