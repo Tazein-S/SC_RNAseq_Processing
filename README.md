@@ -1,28 +1,3 @@
-# Quickly transferring your GitHub Repos
-
-The easiest way to transfer your repos to your own organization is to clone it 
-and change the remote. 
-
-```bash
-git clone git@github.com:bf528/your-repo.git
-cd your-repo/
-```
-
-In between this step, go to GitHub and create a new repository under your own 
-username. In the command below, replace the SSH link with the SSH link on the
-page shown when you create your new repo, and then run the commands. 
-
-
-```bash
-git remote set-url origin git@github.com:<your_github_username>/your_new_repo.git
-git push -u origin main
-```
-
-Note that this method will **preserve** your commit history. If you want to reset
-your history, you will need to use a different method (or you can delete the .git/
-folder and follow the steps provided when you create a new repo on the GitHub website)
-
-
 # Single Cell RNAseq pre-processing
 
 We are going to recreate some of the basic findings from this paper: https://www.nature.com/articles/s41467-020-20343-5#Abs1

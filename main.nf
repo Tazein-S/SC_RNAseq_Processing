@@ -5,7 +5,7 @@ include {COUNT} from './modules/cellranger_count'
 
 workflow {
 
-    Channel.fromPath(params.samplesheet)
+    Channel.fromPath(params.full)
         .splitCsv(header: true)
         .map { row -> tuple(row.sample, row.ftp) }
         .set { dl_ch }
